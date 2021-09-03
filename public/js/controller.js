@@ -7,5 +7,5 @@ function ChallengeCtrl($http) {
 	var cCtrl = this;
 
 	console.log("Controller loaded!");
-	cCtrl.welcomeMessage = "Welcome to the challenge!";
+	cCtrl.welcomeMessage = "Welcome to the challenge! Trying my best over here";
 }
