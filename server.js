@@ -69,45 +69,17 @@ app.listen(port, (err) => {
 		console.log("Server started on port:", port);
 		//console.log(`GraphQL at http://localhost:${port}${server.graphqlPath}/`);
 		
-		//job will be perfomed every hour
-		const job = nodeCron.schedule("*/5 * * * * *", () => {
-			// console.log('hey, it works!');
-
-			// fet json url: https://automation.bigdaddyunlimited.com/tracking_data.json
-
-			// return app.get("https://automation.bigdaddyunlimited.com/tracking_data.json", (req, res) => {
-			// 	//res.sendFile("app.html", { root: __dirname + "/public/html" });
-			// 	console.log(res.json());
-			
-		// 	let url = "https://automation.bigdaddyunlimited.com/tracking_data.json";
-		// 	//to get from json file from url
-
-		// 	let settings = { method: "Get" };
-
-		// 	fetch(url, settings).then(res => res.json()).then((json) => {
-		// 		// do something
-		// 		console.log(json.)
-		// 	})
-		// });
+		//job will be performed every hour
+		const job = nodeCron.schedule(" 0 * * * *", () => {
+			console.log('app is running every 1 hour')
+			console.log(getTracking())
+		})
+			//job will be performed every hour at 30 mins
+		const job2 = nodeCron.schedule(" 30 * * * *", () => {
+			console.log('app is running every 1 hour at 30 mins')
+			console.log(getTracking())
+			});
 		
-		// app.get('/', function (res) {
-		// 	let url = 'https://automation.bigdaddyunlimited.com/tracking_data.json';
-			 
-		// 	fetch(url)
-		// 	.then(res => res.json())
-		// 	.then(data => {
-		// 		res.send({ data });
-		// 		console.log(data)
-		// 	})
-		// 	.catch(err => {
-		// 		res.send(err);
-		// 	});
-		// });
-		console.log('app is running every 5 seconds')
-		console.log(getTracking())
-		
-			//push to mongo
-		  return job.start()
-		});
+		return job.start() && job2.start()
 	}
 });
