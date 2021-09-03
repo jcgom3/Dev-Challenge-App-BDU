@@ -3,7 +3,7 @@ const { gql } = require('apollo-server-express');
 // allows to specify what type of data and how will it be structured.
 const typeDefs = gql `
     type Tracking {
-        _id: ID
+        _id: ID!
         ship_date: String
         tracking_number: String
         shipping_carrier: String
